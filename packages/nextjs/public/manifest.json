@@ -1,5 +1,5 @@
 {
-  "name": "Scaffold-ETH 2 DApp",
-  "description": "A DApp built with Scaffold-ETH",
+  "name": "EduResultChain",
+  "description": "EduResultChain is a blockchain-based platform that securely manages and verifies students' academic results, certificates, and mark sheets.",
   "iconPath": "logo.svg"
 }
