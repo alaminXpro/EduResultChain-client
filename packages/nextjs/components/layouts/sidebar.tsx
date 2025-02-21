@@ -114,11 +114,21 @@ const Sidebar = () => {
                 <>
                   <h2 className="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                     <IconMinus className="hidden h-5 w-4 flex-none" />
-                    <span>{t("student_dashboard")}</span>
+                    <span>{t("student_menu")}</span>
                   </h2>
 
                   <li className="nav-item">
                     <ul>
+                      <li className="nav-item">
+                        <Link href="/student" className="group">
+                          <div className="flex items-center">
+                            <IconMenuDashboard className="shrink-0 group-hover:!text-primary" />
+                            <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
+                              {t("dashboard")}
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
                       <li className="nav-item">
                         <Link href="/dashboard/student/results" className="group">
                           <div className="flex items-center">
@@ -171,11 +181,21 @@ const Sidebar = () => {
                 <>
                   <h2 className="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                     <IconMinus className="hidden h-5 w-4 flex-none" />
-                    <span>{t("institution_dashboard")}</span>
+                    <span>{t("institution_menu")}</span>
                   </h2>
 
                   <li className="nav-item">
                     <ul>
+                      <li className="nav-item">
+                        <Link href="/institution" className="group">
+                          <div className="flex items-center">
+                            <IconMenuDashboard className="shrink-0 group-hover:!text-primary" />
+                            <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
+                              {t("dashboard")}
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
                       <li className="nav-item">
                         <Link href="/dashboard/institution/students" className="group">
                           <div className="flex items-center">

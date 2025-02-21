@@ -1,8 +1,8 @@
 import React from "react";
-import Loading from "@/components/layouts/loading";
+import RouteLoading from "@/components/layouts/route-loading";
 
 const loading = () => {
-  return <Loading />;
+  return <RouteLoading />;
 };
 
 export default loading;

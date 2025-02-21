@@ -33,16 +33,18 @@ import IconMenuMore from "@/components/icon/menu/icon-menu-more";
 import IconMenuNotes from "@/components/icon/menu/icon-menu-notes";
 import IconMenuPages from "@/components/icon/menu/icon-menu-pages";
 import { getTranslation } from "@/i18n";
+import { useGetUser, useLogout } from "@/services/api";
 import { IRootState } from "@/store";
 import { toggleRTL, toggleSidebar, toggleTheme } from "@/store/themeConfigSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const pathname = usePathname();
-  const dispatch = useDispatch();
   const router = useRouter();
+  const dispatch = useDispatch();
   const { t, i18n } = getTranslation();
-
+  const { mutate: logout } = useLogout();
+  const { data: user } = useGetUser();
   useEffect(() => {
     const selector = document.querySelector('ul.horizontal-menu a[href="' + window.location.pathname + '"]');
     if (selector) {
@@ -164,8 +166,8 @@ const Header = () => {
 
   const [search, setSearch] = useState(false);
 
-  const isInstitutionDashboard = pathname === "/dashboard/institution";
-  const isStudentDashboard = pathname === "/dashboard/student";
+  const isInstitutionDashboard = pathname === "/institution";
+  const isStudentDashboard = pathname === "/student";
 
   return (
     <header className={`z-40 ${themeConfig.semidark && themeConfig.menu === "horizontal" ? "dark" : ""}`}>
@@ -400,7 +402,7 @@ const Header = () => {
                 button={
                   <img
                     className="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                    src="/assets/images/user-profile.jpeg"
+                    src={user?.avatar || "/favicon.png"}
                     alt="userProfile"
                   />
                 }
@@ -410,44 +412,49 @@ const Header = () => {
                     <div className="flex items-center px-4 py-4">
                       <img
                         className="h-10 w-10 rounded-md object-cover"
-                        src="/assets/images/user-profile.jpeg"
+                        src={user?.avatar || "/favicon.png"}
                         alt="userProfile"
                       />
                       <div className="truncate ltr:pl-4 rtl:pr-4">
-                        <h4 className="text-base">MD. AL AMIN</h4>
+                        <h4 className="text-base">
+                          {user?.first_name} {user?.last_name}
+                        </h4>
                         <button
                           type="button"
                           className="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
-                          title="eduresultchain@gmail.com"
+                          title={user?.email}
                         >
-                          <span className="inline-block max-w-[200px] truncate">eduresult...@gmail.com</span>
+                          <span className="inline-block max-w-[200px] truncate">{user?.email}</span>
                         </button>
                       </div>
                     </div>
                   </li>
                   <li>
-                    <Link href="/users/profile" className="dark:hover:text-white">
+                    <Link
+                      href={isInstitutionDashboard ? "/institution/profile" : "/student/profile"}
+                      className="dark:hover:text-white"
+                    >
                       <IconUser className="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
                       {t("profile")}
                     </Link>
                   </li>
                   <li>
-                    <Link href="/apps/mailbox" className="dark:hover:text-white">
-                      <IconMail className="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
-                      {t("inbox")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/auth/boxed-lockscreen" className="dark:hover:text-white">
+                    <Link href="/login" className="dark:hover:text-white">
                       <IconLockDots className="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
                       {t("lock_screen")}
                     </Link>
                   </li>
                   <li className="border-t border-white-light dark:border-white-light/10">
-                    <Link href="/auth/boxed-signin" className="!py-3 text-danger">
+                    <button
+                      onClick={async () => {
+                        await logout();
+                        router.push("/login");
+                      }}
+                      className="w-full flex items-center !py-3 text-danger hover:bg-red-50 dark:hover:bg-red-900/30"
+                    >
                       <IconLogout className="h-4.5 w-4.5 shrink-0 rotate-90 ltr:mr-2 rtl:ml-2" />
                       {t("sign_out")}
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               </Dropdown>
@@ -459,15 +466,17 @@ const Header = () => {
         <ul className="horizontal-menu hidden border-t border-[#ebedf2] bg-white px-6 py-1.5 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-black dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
           {!isInstitutionDashboard && (
             <li className="menu nav-item relative">
-              <button type="button" className="nav-link">
-                <div className="flex items-center">
-                  <IconMenuDashboard className="shrink-0" />
-                  <span className="px-1">{t("student")}</span>
-                </div>
-                <div className="right_arrow">
-                  <IconCaretDown />
-                </div>
-              </button>
+              <Link href="/student">
+                <button type="button" className="nav-link">
+                  <div className="flex items-center">
+                    <IconMenuDashboard className="shrink-0" />
+                    <span className="px-1">{t("student")}</span>
+                  </div>
+                  <div className="right_arrow">
+                    <IconCaretDown />
+                  </div>
+                </button>
+              </Link>
               <ul className="sub-menu">
                 <li>
                   <Link href="/dashboard/student/results">{t("view_results")}</Link>
@@ -487,15 +496,17 @@ const Header = () => {
 
           {!isStudentDashboard && (
             <li className="menu nav-item relative">
-              <button type="button" className="nav-link">
-                <div className="flex items-center">
-                  <IconMenuDatatables className="shrink-0" />
-                  <span className="px-1">{t("institution")}</span>
-                </div>
-                <div className="right_arrow">
-                  <IconCaretDown />
-                </div>
-              </button>
+              <Link href="/institution">
+                <button type="button" className="nav-link">
+                  <div className="flex items-center">
+                    <IconMenuDatatables className="shrink-0" />
+                    <span className="px-1">{t("institution")}</span>
+                  </div>
+                  <div className="right_arrow">
+                    <IconCaretDown />
+                  </div>
+                </button>
+              </Link>
               <ul className="sub-menu">
                 <li>
                   <Link href="/dashboard/institution/students">{t("student_management")}</Link>
