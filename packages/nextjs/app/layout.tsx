@@ -2,6 +2,7 @@ import React from "react";
 import { Nunito } from "next/font/google";
 import "../styles/tailwind.css";
 import "react-perfect-scrollbar/dist/css/styles.css";
+import QueryProvider from "~~/components/QueryProvider";
 import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
@@ -17,7 +18,9 @@ const nunito = Nunito({
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={nunito.variable}>{children}</body>
+      <body className={nunito.variable}>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 };

@@ -2409,6 +2409,7 @@ __metadata:
     "@tailwindcss/forms": ^0.5.10
     "@tailwindcss/typography": ^0.5.16
     "@tanstack/react-query": ~5.59.15
+    "@tanstack/react-query-devtools": ^5.66.8
     "@tippyjs/react": ^4.2.6
     "@trivago/prettier-plugin-sort-imports": ~4.3.0
     "@types/lodash": ^4.17.15
@@ -2793,6 +2794,25 @@ __metadata:
   version: 5.59.20
   resolution: "@tanstack/query-core@npm:5.59.20"
   checksum: ed836033c7f34a61e7f152da1067ec170e36e861dc591e2a068f73918bcc641bb50ce90dc3b8d12e047f63f70b2842f72e3328d649c841f5c4ea51fdb95e454b
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-devtools@npm:5.65.0":
+  version: 5.65.0
+  resolution: "@tanstack/query-devtools@npm:5.65.0"
+  checksum: 6c33dfcca8e1cee18f313598982b23fa95c18f60f2cd1b7d852f36c2f4399cfa3e743d1b26580406029a169f263f1e3b22dbbf58e8bd2e0c70cfe91af26bd5fd
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:^5.66.8":
+  version: 5.66.8
+  resolution: "@tanstack/react-query-devtools@npm:5.66.8"
+  dependencies:
+    "@tanstack/query-devtools": 5.65.0
+  peerDependencies:
+    "@tanstack/react-query": ^5.66.8
+    react: ^18 || ^19
+  checksum: d3d6e7824af5a3143e8db8f8b626c5f351d757b9409db89e6bd7da9e0b4aee05ae83baad0cdeaf44a64857f121c8304b75cce8e8ddad905a22585927afd86675
   languageName: node
   linkType: hard
 
@@ -6024,6 +6044,13 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.21.0
   checksum: f7be01523282e9bb06c0cd2693d34f245247a29098527d4420628966a2d9aad154bd0e90a6b1cf66d37adcb769cd108cf8a7bd49d76db0fb119af5cdd13644f4
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "date-fns@npm:4.1.0"
+  checksum: fb681b242cccabed45494468f64282a7d375ea970e0adbcc5dcc92dcb7aba49b2081c2c9739d41bf71ce89ed68dd73bebfe06ca35129490704775d091895710b
   languageName: node
   linkType: hard
 
@@ -12508,6 +12535,7 @@ __metadata:
   dependencies:
     "@tailwindcss/forms": ^0.5.10
     "@tailwindcss/typography": ^0.5.16
+    date-fns: ^4.1.0
     husky: ~8.0.3
     lint-staged: ~13.2.2
   languageName: unknown
