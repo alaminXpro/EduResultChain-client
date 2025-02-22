@@ -75,6 +75,7 @@ export const useLogout = () => {
 
 export const useGetUser = () => {
   const queryClient = useQueryClient();
+  const cookies = new Cookies();
 
   return useQuery<User, Error>({
     queryKey: ["me"],
@@ -82,13 +83,17 @@ export const useGetUser = () => {
       try {
         const response = await instance.get<ApiResponse<User>>("me");
         return response.data.data;
-      } catch (error) {
-        queryClient.invalidateQueries({ queryKey: ["me"] });
+      } catch (error: any) {
+        // Clear token if unauthorized or token-related error
+        if (error.code === 401 || error.response?.status === 401) {
+          cookies.remove("token");
+          queryClient.invalidateQueries({ queryKey: ["me"] });
+        }
         throw error;
       }
     },
-    retry: false, // Don't retry on failure
-    refetchOnWindowFocus: true, // Refetch when window regains focus
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: false,
+    refetchOnWindowFocus: true,
+    staleTime: 5 * 1000,
   });
 };

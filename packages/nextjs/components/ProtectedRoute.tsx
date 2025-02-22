@@ -15,21 +15,33 @@ export default function ProtectedRoute({ children, requiredRole }: ProtectedRout
   const { data: user, isLoading, isError } = useGetUser();
 
   useEffect(() => {
+    // Only redirect if we're not in a loading state
     if (!isLoading) {
       if (isError || !user) {
-        router.push("/login");
+        // Immediate redirect for authentication errors
+        router.replace("/login");
         return;
       }
 
       if (user.role_id !== requiredRole) {
-        router.push("/welcome");
+        router.replace("/welcome");
         return;
       }
     }
   }, [isLoading, isError, user, requiredRole, router]);
 
-  // Don't render anything until we've verified the user
-  if (isLoading || !user || user.role_id !== requiredRole) {
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return <AuthLoading />;
+  }
+
+  // Don't render anything if there's an error or no user
+  if (isError || !user) {
+    return <AuthLoading />;
+  }
+
+  // Don't render if role doesn't match
+  if (user.role_id !== requiredRole) {
     return <AuthLoading />;
   }
 

@@ -448,7 +448,7 @@ const Header = () => {
                     <button
                       onClick={async () => {
                         await logout();
-                        router.push("/login");
+                        router.replace("/login");
                       }}
                       className="w-full flex items-center !py-3 text-danger hover:bg-red-50 dark:hover:bg-red-900/30"
                     >

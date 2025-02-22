@@ -10,26 +10,27 @@ export default function WelcomePage() {
   const { data: user, isLoading, isError } = useGetUser();
 
   useEffect(() => {
+    // Only handle redirects when not loading
     if (!isLoading) {
       if (isError || !user) {
-        router.push("/login");
+        router.replace("/login");
         return;
       }
 
       // Route based on role
       switch (user.role_id) {
         case 1:
-          router.push("/institution");
+          router.replace("/institution");
           break;
         case 2:
-          router.push("/student");
+          router.replace("/student");
           break;
         default:
-          router.push("/login");
+          router.replace("/login");
       }
     }
   }, [user, isLoading, isError, router]);
 
-  // Show loading state while checking user
+  // Show loading state
   return <RouteLoading />;
 }

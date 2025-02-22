@@ -22,7 +22,7 @@ export default function LoginPage() {
       },
       {
         onSuccess: () => {
-          router.push("/welcome");
+          router.replace("/welcome");
         },
         onError: error => {
           toast.error(error.response?.data.message ?? "Something went wrong");
