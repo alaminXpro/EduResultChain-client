@@ -1,11 +1,12 @@
-'use client';
-import IconLockDots from '@/components/icon/icon-lock-dots';
-import IconMail from '@/components/icon/icon-mail';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { z } from 'zod';
-import { toast } from "react-hot-toast";
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import IconLockDots from "@/components/icon/icon-lock-dots";
+import IconMail from "@/components/icon/icon-mail";
 import { useLogin } from "@/services/api";
+import { toast } from "react-hot-toast";
+import { z } from "zod";
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -25,7 +26,7 @@ const ComponentsAuthLoginForm = () => {
 
     const validation = loginSchema.safeParse(formData);
     if (!validation.success) {
-      validation.error.errors.forEach((err) => toast.error(err.message));
+      validation.error.errors.forEach(err => toast.error(err.message));
       return;
     }
 
@@ -38,10 +39,10 @@ const ComponentsAuthLoginForm = () => {
         onSuccess: () => {
           router.replace("/welcome");
         },
-        onError: (error) => {
+        onError: error => {
           toast.error(error.response?.data.message ?? "Something went wrong");
         },
-      }
+      },
     );
   };
 
@@ -57,7 +58,7 @@ const ComponentsAuthLoginForm = () => {
             placeholder="Enter Username"
             className="form-input ps-10 placeholder:text-white-dark"
             value={formData.username}
-            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+            onChange={e => setFormData({ ...formData, username: e.target.value })}
           />
           <span className="absolute start-4 top-1/2 -translate-y-1/2">
             <IconMail fill={true} />
@@ -74,7 +75,7 @@ const ComponentsAuthLoginForm = () => {
             placeholder="Enter Password"
             className="form-input ps-10 placeholder:text-white-dark"
             value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            onChange={e => setFormData({ ...formData, password: e.target.value })}
           />
           <span className="absolute start-4 top-1/2 -translate-y-1/2">
             <IconLockDots fill={true} />
@@ -87,7 +88,10 @@ const ComponentsAuthLoginForm = () => {
           <span className="text-white-dark">Subscribe to weekly newsletter</span>
         </label>
       </div>
-      <button type="submit" className="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]">
+      <button
+        type="submit"
+        className="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]"
+      >
         {isPending ? "Signing in..." : "Sign in"}
       </button>
     </form>
