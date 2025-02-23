@@ -1,85 +1,111 @@
-"use client";
+import ComponentsAuthLoginForm from '@/components/auth/components-auth-login-form';
+import IconFacebookCircle from '@/components/icon/icon-facebook-circle';
+import IconGoogle from '@/components/icon/icon-google';
+import IconInstagram from '@/components/icon/icon-instagram';
+import IconTwitter from '@/components/icon/icon-twitter';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useLogin } from "@/services/api";
-import { toast } from "react-hot-toast";
+import { Metadata } from 'next';
+import Link from 'next/link';
+import React from 'react';
 
-export default function LoginPage() {
-  const router = useRouter();
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
-  const { mutate: login, isPending } = useLogin();
+export const metadata: Metadata = {
+    title: 'Login Cover',
+};
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    login(
-      {
-        ...formData,
-        device_name: "web",
-      },
-      {
-        onSuccess: () => {
-          router.replace("/welcome");
-        },
-        onError: error => {
-          toast.error(error.response?.data.message ?? "Something went wrong");
-        },
-      },
-    );
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg">
+const CoverLogin = () => {
+    return (
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-        </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm space-y-4">
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                Username
-              </label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                value={formData.username}
-                onChange={e => setFormData({ ...formData, username: e.target.value })}
-              />
+            <div className="absolute inset-0">
+                <img src="/assets/images/auth/bg-gradient.png" alt="image" className="h-full w-full object-cover" />
             </div>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                value={formData.password}
-                onChange={e => setFormData({ ...formData, password: e.target.value })}
-              />
-            </div>
-          </div>
+            <div className="relative flex min-h-screen items-center justify-center bg-[url(/assets/images/auth/map.png)] bg-cover bg-center bg-no-repeat px-6 py-10 dark:bg-[#060818] sm:px-16">
+                <img src="/assets/images/auth/coming-soon-object1.png" alt="image" className="absolute left-0 top-1/2 h-full max-h-[893px] -translate-y-1/2" />
+                <img src="/assets/images/auth/coming-soon-object2.png" alt="image" className="absolute left-24 top-0 h-40 md:left-[30%]" />
+                <img src="/assets/images/auth/coming-soon-object3.png" alt="image" className="absolute right-0 top-0 h-[300px]" />
+                <img src="/assets/images/auth/polygon-object.svg" alt="image" className="absolute bottom-0 end-[28%]" />
+                <div className="relative flex w-full max-w-[1502px] flex-col justify-between overflow-hidden rounded-md bg-white/60 backdrop-blur-lg dark:bg-black/50 lg:min-h-[758px] lg:flex-row lg:gap-10 xl:gap-0">
+                    <div className="relative hidden w-full items-center justify-center bg-[linear-gradient(225deg,rgba(239,18,98,1)_0%,rgba(67,97,238,1)_100%)] p-5 lg:inline-flex lg:max-w-[835px] xl:-ms-28 ltr:xl:skew-x-[14deg] rtl:xl:skew-x-[-14deg]">
+                        <div className="absolute inset-y-0 w-8 from-primary/10 via-transparent to-transparent ltr:-right-10 ltr:bg-gradient-to-r rtl:-left-10 rtl:bg-gradient-to-l xl:w-16 ltr:xl:-right-20 rtl:xl:-left-20"></div>
+                        <div className="ltr:xl:-skew-x-[14deg] rtl:xl:skew-x-[14deg]">
+                            <Link href="/" className="ms-10 block w-48 lg:w-72">
+                                <img src="/logo.png" alt="Logo" className="w-full" />
+                            </Link>
+                            <div className="mt-24 hidden w-full max-w-[430px] lg:block">
+                                <img src="/assets/images/auth/login.svg" alt="Cover Image" className="w-full" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative flex w-full flex-col items-center justify-center gap-6 px-4 pb-16 pt-6 sm:px-6 lg:max-w-[667px]">
+                        <div className="flex w-full max-w-[440px] items-center gap-2 lg:absolute lg:end-6 lg:top-6 lg:max-w-full">
+                            <Link href="/" className="block w-8 lg:hidden">
+                                <img src="/logo.png" alt="Logo" className="mx-auto w-10" />
+                            </Link>
+                           
+                        </div>
+                        <div className="w-full max-w-[440px] lg:mt-16">
+                            <div className="mb-10">
+                                <h1 className="text-3xl font-extrabold uppercase !leading-snug text-primary md:text-4xl">Sign in</h1>
+                                <p className="text-base font-bold leading-normal text-white-dark">Enter your email and password to login</p>
+                            </div>
+                            <ComponentsAuthLoginForm />
 
-          <div>
-            <button
-              type="submit"
-              disabled={isPending}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-400"
-            >
-              {isPending ? "Signing in..." : "Sign in"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-}
+                            <div className="relative my-7 text-center md:mb-9">
+                                <span className="absolute inset-x-0 top-1/2 h-px w-full -translate-y-1/2 bg-white-light dark:bg-white-dark"></span>
+                                <span className="relative bg-white px-2 font-bold uppercase text-white-dark dark:bg-dark dark:text-white-light">or</span>
+                            </div>
+                            <div className="mb-10 md:mb-[60px]">
+                                <ul className="flex justify-center gap-3.5 text-white">
+                                    <li>
+                                        <Link
+                                            href="#"
+                                            className="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
+                                            style={{ background: 'linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)' }}
+                                        >
+                                            <IconInstagram />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href="#"
+                                            className="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
+                                            style={{ background: 'linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)' }}
+                                        >
+                                            <IconFacebookCircle />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href="#"
+                                            className="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
+                                            style={{ background: 'linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)' }}
+                                        >
+                                            <IconTwitter fill={true} />
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href="#"
+                                            className="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
+                                            style={{ background: 'linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)' }}
+                                        >
+                                            <IconGoogle />
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="text-center dark:text-white">
+                                Don&apos;t have an account ?&nbsp;
+                                <Link href="/auth/cover-register" className="uppercase text-primary underline transition hover:text-black dark:hover:text-white">
+                                    SIGN UP
+                                </Link>
+                            </div>
+                        </div>
+                        <p className="absolute bottom-6 w-full text-center dark:text-white">© {new Date().getFullYear()}.EduResultChain All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CoverLogin;
