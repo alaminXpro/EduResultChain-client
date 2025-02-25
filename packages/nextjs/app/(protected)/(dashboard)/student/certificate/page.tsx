@@ -52,10 +52,12 @@ const CertificateForm = () => {
             Name: <input type="text" name="name" value={formData.name} onChange={handleChange} />
           </label>
           <label>
-            Father&apos;s Name: <input type="text" name="fatherName" value={formData.fatherName} onChange={handleChange} />
+            Father&apos;s Name:{" "}
+            <input type="text" name="fatherName" value={formData.fatherName} onChange={handleChange} />
           </label>
           <label>
-            Mother&apos;s Name: <input type="text" name="motherName" value={formData.motherName} onChange={handleChange} />
+            Mother&apos;s Name:{" "}
+            <input type="text" name="motherName" value={formData.motherName} onChange={handleChange} />
           </label>
           <label>
             College: <input type="text" name="college" value={formData.college} onChange={handleChange} />
