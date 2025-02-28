@@ -168,6 +168,7 @@ const Header = () => {
 
   const isInstitutionDashboard = pathname === "/institution";
   const isStudentDashboard = pathname === "/student";
+  const isBoardDashboard = pathname === "/board";
 
   return (
     <header className={`z-40 ${themeConfig.semidark && themeConfig.menu === "horizontal" ? "dark" : ""}`}>
@@ -431,7 +432,7 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      href={isInstitutionDashboard ? "/institution/profile" : "/student/profile"}
+                      href={isInstitutionDashboard ? "/institution/profile" : isStudentDashboard ? "/student/profile" : isBoardDashboard ? "/board/profile" : ""}
                       className="dark:hover:text-white"
                     >
                       <IconUser className="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
@@ -527,8 +528,9 @@ const Header = () => {
             </li>
           )}
 
-          <li className="menu nav-item relative">
-            <button type="button" className="nav-link">
+          {!isBoardDashboard && (
+            <li className="menu nav-item relative">
+              <button type="button" className="nav-link">
               <div className="flex items-center">
                 <IconMenuPages className="shrink-0" />
                 <span className="px-1">{t("results")}</span>
@@ -547,8 +549,9 @@ const Header = () => {
               <li>
                 <Link href="/statistics">{t("result_statistics")}</Link>
               </li>
-            </ul>
-          </li>
+              </ul>
+            </li>
+          )}
 
           <li className="menu nav-item relative">
             <button type="button" className="nav-link">
