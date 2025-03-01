@@ -85,7 +85,7 @@ const Sidebar = () => {
 
   const isStudentDashboard = pathname?.includes("/student");
   const isInstitutionDashboard = pathname?.includes("/institution");
-  const isBoardDashboard = pathname?.includes("/board");  
+  const isBoardDashboard = pathname?.includes("/board");
   return (
     <div className={semidark ? "dark" : ""}>
       <nav
@@ -197,33 +197,22 @@ const Sidebar = () => {
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link href="/dashboard/institution/students" className="group">
+                        <Link href="/institution/add_new_students" className="group">
                           <div className="flex items-center">
                             <IconMenuUsers className="shrink-0 group-hover:!text-primary" />
                             <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
-                              {t("student_management")}
+                              {t("add_new_students")}
                             </span>
                           </div>
                         </Link>
                       </li>
 
                       <li className="nav-item">
-                        <Link href="/dashboard/institution/results" className="group">
+                        <Link href="/institution/form_fillup" className="group">
                           <div className="flex items-center">
                             <IconMenuDatatables className="shrink-0 group-hover:!text-primary" />
                             <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
-                              {t("result_management")}
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link href="/dashboard/institution/blockchain" className="group">
-                          <div className="flex items-center">
-                            <IconMenuCharts className="shrink-0 group-hover:!text-primary" />
-                            <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
-                              {t("blockchain_upload")}
+                              {t("form_fillup")}
                             </span>
                           </div>
                         </Link>
@@ -263,7 +252,7 @@ const Sidebar = () => {
                   </h2>
 
                   <li className="nav-item">
-                     <ul>
+                    <ul>
                       <li className="nav-item">
                         <Link href="/board" className="group">
                           <div className="flex items-center">
@@ -277,7 +266,7 @@ const Sidebar = () => {
                     </ul>
                   </li>
                 </>
-              )} 
+              )}
             </ul>
           </PerfectScrollbar>
         </div>
