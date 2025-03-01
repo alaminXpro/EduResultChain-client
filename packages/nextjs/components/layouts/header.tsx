@@ -432,7 +432,15 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      href={isInstitutionDashboard ? "/institution/profile" : isStudentDashboard ? "/student/profile" : isBoardDashboard ? "/board/profile" : ""}
+                      href={
+                        isInstitutionDashboard
+                          ? "/institution/profile"
+                          : isStudentDashboard
+                            ? "/student/profile"
+                            : isBoardDashboard
+                              ? "/board/profile"
+                              : ""
+                      }
                       className="dark:hover:text-white"
                     >
                       <IconUser className="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
@@ -531,24 +539,24 @@ const Header = () => {
           {!isBoardDashboard && (
             <li className="menu nav-item relative">
               <button type="button" className="nav-link">
-              <div className="flex items-center">
-                <IconMenuPages className="shrink-0" />
-                <span className="px-1">{t("results")}</span>
-              </div>
-              <div className="right_arrow">
-                <IconCaretDown />
-              </div>
-            </button>
-            <ul className="sub-menu">
-              <li>
-                <Link href="/results">{t("result_page")}</Link>
-              </li>
-              <li>
-                <Link href="/verify">{t("result_verification")}</Link>
-              </li>
-              <li>
-                <Link href="/statistics">{t("result_statistics")}</Link>
-              </li>
+                <div className="flex items-center">
+                  <IconMenuPages className="shrink-0" />
+                  <span className="px-1">{t("results")}</span>
+                </div>
+                <div className="right_arrow">
+                  <IconCaretDown />
+                </div>
+              </button>
+              <ul className="sub-menu">
+                <li>
+                  <Link href="/results">{t("result_page")}</Link>
+                </li>
+                <li>
+                  <Link href="/verify">{t("result_verification")}</Link>
+                </li>
+                <li>
+                  <Link href="/statistics">{t("result_statistics")}</Link>
+                </li>
               </ul>
             </li>
           )}
