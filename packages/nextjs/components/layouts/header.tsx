@@ -37,7 +37,7 @@ import { useGetUser, useLogout } from "@/services/api";
 import { IRootState } from "@/store";
 import { toggleRTL, toggleSidebar, toggleTheme } from "@/store/themeConfigSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useAuth } from "~~/hooks/useAuth";
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -166,9 +166,7 @@ const Header = () => {
 
   const [search, setSearch] = useState(false);
 
-  const isInstitutionDashboard = pathname === "/institution";
-  const isStudentDashboard = pathname === "/student";
-  const isBoardDashboard = pathname === "/board";
+  const {isStudent, isInstitution, isBoard} = useAuth();
 
   return (
     <header className={`z-40 ${themeConfig.semidark && themeConfig.menu === "horizontal" ? "dark" : ""}`}>
@@ -433,11 +431,11 @@ const Header = () => {
                   <li>
                     <Link
                       href={
-                        isInstitutionDashboard
+                        isInstitution
                           ? "/institution/profile"
-                          : isStudentDashboard
+                          : isStudent
                             ? "/student/profile"
-                            : isBoardDashboard
+                            : isBoard
                               ? "/board/profile"
                               : ""
                       }
@@ -469,11 +467,11 @@ const Header = () => {
               </Dropdown>
             </div>
           </div>
-        </div>
+        </div>  
 
         {/* horizontal menu */}
         <ul className="horizontal-menu hidden border-t border-[#ebedf2] bg-white px-6 py-1.5 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-black dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
-          {!isInstitutionDashboard && (
+          {isStudent && (
             <li className="menu nav-item relative">
               <Link href="/student">
                 <button type="button" className="nav-link">
@@ -487,6 +485,9 @@ const Header = () => {
                 </button>
               </Link>
               <ul className="sub-menu">
+                <li>
+                  <Link href="/student">{t("dashboard")}</Link>
+                </li>
                 <li>
                   <Link href="/dashboard/student/results">{t("view_results")}</Link>
                 </li>
@@ -503,7 +504,7 @@ const Header = () => {
             </li>
           )}
 
-          {!isStudentDashboard && (
+          {isInstitution && (
             <li className="menu nav-item relative">
               <Link href="/institution">
                 <button type="button" className="nav-link">
@@ -518,13 +519,13 @@ const Header = () => {
               </Link>
               <ul className="sub-menu">
                 <li>
-                  <Link href="/dashboard/institution/students">{t("student_management")}</Link>
+                  <Link href="/institution">{t("dashboard")}</Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/institution/results">{t("result_management")}</Link>
+                  <Link href="/institution/add_new_students">{t("add_new_students")}</Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/institution/blockchain">{t("blockchain_upload")}</Link>
+                  <Link href="/institution/form_fillup">{t("form_fillup")}</Link>
                 </li>
                 <li>
                   <Link href="/dashboard/institution/revalidation-requests">{t("revalidation_requests")}</Link>
@@ -536,26 +537,31 @@ const Header = () => {
             </li>
           )}
 
-          {!isBoardDashboard && (
+          {isBoard && (
             <li className="menu nav-item relative">
-              <button type="button" className="nav-link">
-                <div className="flex items-center">
-                  <IconMenuPages className="shrink-0" />
-                  <span className="px-1">{t("results")}</span>
-                </div>
-                <div className="right_arrow">
-                  <IconCaretDown />
-                </div>
-              </button>
+              <Link href="/board">
+                <button type="button" className="nav-link">
+                  <div className="flex items-center">
+                    <IconMenuPages className="shrink-0" />
+                    <span className="px-1">{t("board")}</span>
+                  </div>
+                  <div className="right_arrow">
+                    <IconCaretDown />
+                  </div>
+                </button>
+              </Link>
               <ul className="sub-menu">
                 <li>
-                  <Link href="/results">{t("result_page")}</Link>
+                  <Link href="/board">{t("dashboard")}</Link>
                 </li>
                 <li>
-                  <Link href="/verify">{t("result_verification")}</Link>
+                  <Link href="/board/institutionList">{t("institution_list")}</Link>
                 </li>
                 <li>
-                  <Link href="/statistics">{t("result_statistics")}</Link>
+                  <Link href="/board/assesment">{t("assesment")}</Link>
+                </li>
+                <li>
+                  <Link href="/board/assignmarks">{t("assignmarks")}</Link>
                 </li>
               </ul>
             </li>
