@@ -155,5 +155,11 @@
   "result_verification": "Result Verification",
   "new": "New",
   "online": "Online",
-  "board_menu": "Board Menu"
+  "board_menu": "Board Menu",
+  "add_new_students": "Add New Students",
+  "form_fillup": "Form Fillup",
+  "assesment": "Assesment",
+  "assignmarks": "Assignmarks",
+  "institution_list": "Institution List",
+  "board": "Board"
 }

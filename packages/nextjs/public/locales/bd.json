@@ -154,5 +154,11 @@
   "result_page": "ফলাফল পৃষ্ঠা",
   "result_verification": "ফলাফল যাচাইকরণ",
   "new": "নতুন",
-  "board_menu": "বোর্ড মেনু"
+  "board_menu": "বোর্ড মেনু",
+  "add_new_students": "নতুন শিক্ষার্থী যোগ করুন",
+  "form_fillup": "ফর্ম পূরণ করুন",
+  "assesment": "পরীক্ষা",
+  "assignmarks": "পরিমাণ দিন",
+  "institution_list": "প্রতিষ্ঠান তালিকা",
+  "board": "বোর্ড"
 }
