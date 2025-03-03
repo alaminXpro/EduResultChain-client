@@ -16,19 +16,19 @@ const BoardDashboard = () => {
           <h2 className="text-xl font-semibold">Total Students</h2>
           <p className="text-5xl font-bold">25,000</p>
         </div>
-        
+
         {/* Total Institutions */}
         <div className="bg-blue-100 p-6 shadow-lg rounded-lg text-center border border-blue-300">
           <h2 className="text-xl font-semibold">Total Institutions</h2>
           <p className="text-5xl font-bold">500</p>
         </div>
-        
+
         {/* Result Statistics */}
         <div className="bg-blue-100 p-6 shadow-lg rounded-lg text-center border border-blue-300">
           <h2 className="text-xl font-semibold">Result Statistics</h2>
           <p className="text-5xl font-bold">Pass Rate: 85%</p>
         </div>
-        
+
         {/* Placeholder for Future Stats */}
         <div className="bg-blue-100 p-6 shadow-lg rounded-lg text-center border border-blue-300">
           <h2 className="text-xl font-semibold">Other Info</h2>

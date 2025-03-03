@@ -84,7 +84,7 @@ const Sidebar = () => {
     selector?.classList.add("active");
   };
 
-  const {isStudent, isInstitution, isBoard} = useAuth();
+  const { isStudent, isInstitution, isBoard } = useAuth();
   return (
     <div className={semidark ? "dark" : ""}>
       <nav
@@ -300,6 +300,20 @@ const Sidebar = () => {
                             <IconMenuDashboard className="shrink-0 group-hover:!text-primary" />
                             <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
                               {t("assignmarks")}
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="nav-item">
+                    <ul>
+                      <li className="nav-item">
+                        <Link href="/board/assignmarks" className="group">
+                          <div className="flex items-center">
+                            <IconMenuDashboard className="shrink-0 group-hover:!text-primary" />
+                            <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
+                              {t("Recheck Students")}
                             </span>
                           </div>
                         </Link>

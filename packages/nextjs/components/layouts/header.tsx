@@ -38,6 +38,7 @@ import { IRootState } from "@/store";
 import { toggleRTL, toggleSidebar, toggleTheme } from "@/store/themeConfigSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "~~/hooks/useAuth";
+
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -166,7 +167,7 @@ const Header = () => {
 
   const [search, setSearch] = useState(false);
 
-  const {isStudent, isInstitution, isBoard} = useAuth();
+  const { isStudent, isInstitution, isBoard } = useAuth();
 
   return (
     <header className={`z-40 ${themeConfig.semidark && themeConfig.menu === "horizontal" ? "dark" : ""}`}>
@@ -467,7 +468,7 @@ const Header = () => {
               </Dropdown>
             </div>
           </div>
-        </div>  
+        </div>
 
         {/* horizontal menu */}
         <ul className="horizontal-menu hidden border-t border-[#ebedf2] bg-white px-6 py-1.5 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-black dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
