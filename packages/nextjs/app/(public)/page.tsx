@@ -15,28 +15,28 @@ export default function Home() {
           </div>
           <div className="hidden md:flex space-x-8">
             <Link
-              href="#"
-              className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition"
-            >
-              Home
-            </Link>
-            <Link
-              href="#"
+              href="/about_us"
               className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition"
             >
               About
             </Link>
             <Link
-              href="#"
+              href="/contact"
               className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition"
             >
               Contact
             </Link>
             <Link
-              href="#"
+              href="privacy_policy"
               className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition"
             >
               Privacy Policy
+            </Link>
+            <Link
+              href="/term_and_conditions"
+              className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition"
+            >
+              Terms and Conditions
             </Link>
           </div>
           <div className="hidden md:block">
@@ -85,9 +85,11 @@ export default function Home() {
                 Sign In
               </button>
             </Link>
-            <button className="px-6 py-3 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-800 transition">
-              View Projects
-            </button>
+            <Link href="/mission">
+              <button className="px-6 py-3 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-800 transition">
+                View Mission
+              </button>
+            </Link>
           </div>
         </section>
 
@@ -222,12 +224,12 @@ export default function Home() {
               <h4 className="text-white font-semibold mb-4">Resources</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="hover:text-white transition">
+                  <Link href="/documentation" className="hover:text-white transition">
                     Documentation
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition">
+                  <Link href="/blog" className="hover:text-white transition">
                     Blog
                   </Link>
                 </li>
@@ -242,23 +244,23 @@ export default function Home() {
               <h4 className="text-white font-semibold mb-4">Company</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="hover:text-white transition">
+                  <Link href="/about_us" className="hover:text-white transition">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition">
+                  <Link href="/contact" className="hover:text-white transition">
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition">
+                  <Link href="privacy_policy" className="hover:text-white transition">
                     Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/term_and_conditions" className="hover:text-white transition">
+                    Terms and Conditions
                   </Link>
                 </li>
               </ul>
