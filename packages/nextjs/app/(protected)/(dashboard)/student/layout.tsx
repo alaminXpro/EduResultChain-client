@@ -13,7 +13,7 @@ import ProtectedRoute from "~~/components/ProtectedRoute";
 export default function DefaultLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <ProtectedRoute requiredRole={2}>
+      <ProtectedRoute requiredRole={4}>
         <ProviderComponent>
           {/* BEGIN MAIN CONTAINER */}
           <div className="relative">

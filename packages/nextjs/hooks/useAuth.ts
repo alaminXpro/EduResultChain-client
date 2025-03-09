@@ -8,8 +8,9 @@ export function useAuth() {
     isLoading,
     isError,
     isAuthenticated: !!user,
+    isAdmin: user?.role_id === 1,
+    isBoard: user?.role_id === 2,
     isInstitution: user?.role_id === 3,
-    isStudent: user?.role_id === 2,
-    isBoard: user?.role_id === 4,
+    isStudent: user?.role_id === 4,
   };
 }

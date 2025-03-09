@@ -129,7 +129,7 @@ const Sidebar = () => {
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link href="/dashboard/student/results" className="group">
+                        <Link href="/student/results" className="group">
                           <div className="flex items-center">
                             <IconMenuDashboard className="shrink-0 group-hover:!text-primary" />
                             <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
@@ -140,7 +140,7 @@ const Sidebar = () => {
                       </li>
 
                       <li className="nav-item">
-                        <Link href="/dashboard/student/certificates" className="group">
+                        <Link href="/student/certificate" className="group">
                           <div className="flex items-center">
                             <IconMenuDocumentation className="shrink-0 group-hover:!text-primary" />
                             <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
@@ -151,7 +151,7 @@ const Sidebar = () => {
                       </li>
 
                       <li className="nav-item">
-                        <Link href="/dashboard/student/revalidation" className="group">
+                        <Link href="/student/recheckform" className="group">
                           <div className="flex items-center">
                             <IconMenuForms className="shrink-0 group-hover:!text-primary" />
                             <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">
@@ -162,7 +162,7 @@ const Sidebar = () => {
                       </li>
 
                       <li className="nav-item">
-                        <Link href="/dashboard/student/blockchain-status" className="group">
+                        <Link href="/student/blockchain-status" className="group">
                           <div className="flex items-center">
                             <IconMenuCharts className="shrink-0 group-hover:!text-primary" />
                             <span className="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">

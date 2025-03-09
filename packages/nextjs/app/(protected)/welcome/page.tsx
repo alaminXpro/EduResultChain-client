@@ -19,14 +19,17 @@ export default function WelcomePage() {
 
       // Route based on role
       switch (user.role_id) {
+        case 1:
+          router.replace("/admin");
+          break;
         case 2:
-          router.replace("/student");
+          router.replace("/board");
           break;
         case 3:
           router.replace("/institution");
           break;
         case 4:
-          router.replace("/board");
+          router.replace("/student");
           break;
         default:
           router.replace("/login");
