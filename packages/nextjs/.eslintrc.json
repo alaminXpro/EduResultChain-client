@@ -8,6 +8,8 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "no-unused-vars": "warn",
+    "@next/next/no-img-element": "warn"
   }
 }

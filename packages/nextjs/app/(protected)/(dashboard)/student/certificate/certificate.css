@@ -1,0 +1,217 @@
+.certificate-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.download-button {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.download-button:hover {
+  background-color: #0056b3;
+}
+
+.certificate-container {
+  position: relative;
+  width: 1080px;
+  height: 768px;
+  margin-top: 20px;
+}
+
+.certificate-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.certificate-text {
+  position: absolute;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.title {
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
+  white-space: nowrap;
+  font-family: "Georgia", serif;
+  color: #2c3e50;
+}
+
+.serial {
+  top: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  opacity: 0.8;
+  margin-top: 10px;
+  font-family: "Courier New", monospace;
+  color: #34495e;
+}
+
+.country {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  font-family: "Georgia", serif;
+  margin-top: 10px;
+  color: #2980b9;
+}
+
+.reg-no {
+  top: 24%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-family: "Courier New", monospace;
+  margin-top: 10px;
+  color: #34495e;
+}
+
+.student-name {
+  top: 32%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  margin-top: 5px;
+  font-family: "Verdana", sans-serif;
+  color: #2c3e50;
+}
+
+.name {
+  top: 34%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  font-family: "Brush Script MT", cursive;
+  margin-top: 2px;
+  color: #e74c3c;
+}
+
+.parent {
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-family: "Verdana", sans-serif;
+  margin-top: 2px;
+  color: #34495e;
+}
+
+.college {
+  top: 44%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-family: "Tahoma", sans-serif;
+  margin-top: 10px;
+  color: #2c3e50;
+}
+
+.roll {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  margin-top: 10px;
+  font-family: "Courier New", monospace;
+  color: #34495e;
+}
+
+.exam {
+  top: 56%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  width: 80%;
+  margin-top: 10px;
+  font-family: "Georgia", serif;
+  color: #2980b9;
+}
+
+.gpa {
+  top: 62%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  width: 80%;
+  margin-top: 10px;
+  font-family: "Georgia", serif;
+  color: #27ae60;
+}
+
+.date {
+  top: 66%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  width: 80%;
+  margin-top: 10px;
+  font-family: "Courier New", monospace;
+  color: #34495e;
+}
+
+.controller {
+  top: 76%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  margin-top: 10px;
+  color: #2c3e50;
+}
